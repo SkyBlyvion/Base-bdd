@@ -1,4 +1,4 @@
-# Particularité du fichier yaml (indentation)
+# Particularité du fichier yaml (indentation, ' ',  )
 version: '3.9'
 
 # Declaration des volumes
@@ -6,6 +6,7 @@ volumes:
   monvolumemaria:
 
 services:
+
   # Nom du service
   mariacda:
     image: 'mariadb:latest'
@@ -22,3 +23,19 @@ services:
     # Definition du volume de persistance
     volumes:
      - monvolumemaria:/var/lib/mysql
+     # Permet de créer des fichiers sql disponible et accesible depuis ligne de commandes
+     - ./dbscript:/script
+
+  # Nom du service
+  mysqlcda: 
+    container_name: monmysql
+    build: 
+      context: .
+    ports:
+      - 3310:3306
+    volumes:
+      - mysqlvolume:/var/lib/mysql
+    environment:
+      MYSQL_ROOT_PASSWORD: admin
+      MYSQL_DATABASE: 'application'
+    
