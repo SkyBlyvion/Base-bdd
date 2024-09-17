@@ -1,0 +1,24 @@
+# Particularité du fichier yaml (indentation)
+version: '3.9'
+
+# Declaration des volumes
+volumes:
+  monvolumemaria:
+
+services:
+  # Nom du service
+  mariacda:
+    image: 'mariadb:latest'
+    container_name: 'monmaria'
+    # Premier element machine hote, dernier element machine cible
+    ports:
+      - 3309:3306
+    # Variables d'environnement
+    environment:
+      MARIADB_ROOT_PASSWORD: admin
+      MARIADB_USER: 'totoapp'
+      MARIADB_PASSWORD: 'admin'
+      MARIADB_DATABASE: 'application'
+    # Definition du volume de persistance
+    volumes:
+     - monvolumemaria:/var/lib/mysql
