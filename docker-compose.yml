@@ -4,6 +4,7 @@ version: '3.9'
 # Declaration des volumes
 volumes:
   monvolumemaria:
+  mysqlvolume:
 
 services:
 
@@ -13,7 +14,7 @@ services:
     container_name: 'monmaria'
     # Premier element machine hote, dernier element machine cible
     ports:
-      - 3309:3306
+      - '3309:3306'
     # Variables d'environnement
     environment:
       MARIADB_ROOT_PASSWORD: admin
@@ -24,7 +25,6 @@ services:
     volumes:
      - monvolumemaria:/var/lib/mysql
      # Permet de créer des fichiers sql disponible et accesible depuis ligne de commandes
-     - ./dbscript:/script
 
   # Nom du service
   mysqlcda: 
@@ -32,10 +32,11 @@ services:
     build: 
       context: .
     ports:
-      - 3310:3306
-    volumes:
-      - mysqlvolume:/var/lib/mysql
+      - '3310:3306'
     environment:
       MYSQL_ROOT_PASSWORD: admin
       MYSQL_DATABASE: 'application'
+    volumes:
+      - mysqlvolume:/var/lib/mysql
+      - ./dbscript:/script
     
