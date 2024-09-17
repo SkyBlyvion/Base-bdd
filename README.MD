@@ -1,0 +1,20 @@
+# Commandes
+ - $ docker run -dit --name siteweb -p 8181:80 -v "$PWD":/usr/local/apache2/htdocs/ httpd:2.4
+ - $ nano index.html
+ - On ouvre dans vscode l'index, puis on crée un dockerfile.
+ - $ docker run -dit --name madb -p 3308:3306 -e MYSQL_ROOT_PASSWORD=admin mon_mysql
+ - $ docker build -t mon_mysql .
+ - $ docker exec -it madb mysql -u root -p
+ - mysql> show databases;
+ - mysql> select user, plugin, host from mysql.user;
+ - mysql> alter user 'root'@'localhost' IDENTIFIED WITH mysql_native_password by 'admin';
+ - mysql> select user, plugin, host from mysql.user;
+ - mysql> create user 'totoapp'@'localhost' identified by 'admin2024’;
+ - mysql> grant all privileges on . to 'totoapp'@'localhost' with grant option;
+ - $ docker exec -it madb mysql -u totoapp -p
+ - mysql> create database application;
+ - mysql> show databases;
+ - mysql> use application;
+ - mysql> show tables;
+ - mysql> create table login ( id int(11), identifiant varchar(100), mdp varchar(250), email varchar(250))des;
+ - mysql> describe login;
