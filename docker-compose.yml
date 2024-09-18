@@ -24,7 +24,7 @@ services:
     # Definition du volume de persistance
     volumes:
      - monvolumemaria:/var/lib/mysql
-     # Permet de créer des fichiers sql disponible et accesible depuis ligne de commandes
+     - ./dbscript:/script
 
   # Nom du service
   mysqlcda: 
@@ -38,5 +38,4 @@ services:
       MYSQL_DATABASE: 'application'
     volumes:
       - mysqlvolume:/var/lib/mysql
-      - ./dbscript:/script
     
