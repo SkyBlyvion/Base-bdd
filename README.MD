@@ -144,4 +144,15 @@ WHERE `ville_nom` LIKE 'SAINT-%'
 
 
 
+# Exercice 02 :
+ - il faut optimiser les requêtes, pour cela on peut créer des "vues" qui sonts des tables construites par le systeme de gestion de base de donnée en readONLY.
+ - on peut aussi utiliser des "index" pour améliorer les performances
 
+/!\ CREATION VUE /!\ 
+ - create view ville_dep as select ville_nom, departement_nom from villes_france_free left join departement on departement_
+code = ville_departement;
+
+ - update villes_france_free set ville_nom = "TROIS BASSINS" where ville_nom = 'TROIS-BASSINS'
+
+
+*On veut créer une nouvelle bdd, pour cela on passe en root afin de parer les droits.
